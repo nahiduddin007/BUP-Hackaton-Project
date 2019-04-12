@@ -6,6 +6,22 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="forgot_your_password">Forgot your password?</string>
     <string name="back"><![CDATA[<< Back]]></string>
+    <!--  labels for widgets -->
+    <string name="heightLabel">Height</string>
+    <string name="calculateButton">Calculate</string>
+    <string name="EmptyString"></string>
+    <string name="weightLabel">Weight</string>
+    <string name="bmiLabel">Body Mass Index:</string>
+    <!--  Strings arrays used in Spinner widgets -->
+    <string-array name="heightUnitsArray">
+        <item>feet/inch</item>
+        <item>m/cm</item>
+    </string-array>
+    <string-array name="weightUnitsArray">
+        <item>lb</item>
+        <item>kg</item>
+    </string-array>
+    <string name="being_healthy_quote">Being healthy is a lifestyle not a diet!</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -15,4 +31,15 @@
     <string name="action_settings">Settings</string>
     <string name="notification">Notification</string>
     <string name="cart">Cart</string>
+    <string name="medicine">Medicine</string>
+    <string name="vaccination">Vaccination</string>
+    <string name="vaccination_schedule">Vaccination Schedule</string>
+    <string name="ambulance">Ambulance</string>
+    <string name="bmi_calculator">BMI Calculator</string>
+
+    <string name="bmiNormal">Normal</string>
+    <string name="bmiOver">Overweight</string>
+    <string name="bmiUnder">Underweight</string>
+    <string name="bmiSUnder">Severely Underweight</string>
+    <string name="bmiObese">Obese</string>
 </resources>

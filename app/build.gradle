@@ -33,5 +33,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:18.2.0'
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    api 'petrov.kristiyan.colorpicker:colorpicker-library:1.1.2'
+    implementation 'com.github.prolificinteractive:material-calendarview:2.0.1'
+
+    api "com.daimajia.swipelayout:library:1.2.0@aar"
+
 }
 apply plugin: 'com.google.gms.google-services'

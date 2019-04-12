@@ -42,8 +42,6 @@ public class SignUpFragment extends Fragment {
     private FirebaseAuth mFirebaseAuth;
     private ProgressBar mProgressBar;
     private FirebaseFirestore mFireStore;
-    private ImageButton closeIB;
-
 
     public SignUpFragment(){
 
@@ -72,7 +70,6 @@ public class SignUpFragment extends Fragment {
         signUpButton = rootView.findViewById(R.id.signup_button);
 //        signUpWithGoogleButton = rootView.findViewById(R.id.signup_with_google_button);
         mProgressBar = rootView.findViewById(R.id.progressBar);
-        closeIB = rootView.findViewById(R.id.signup_close_image_button);
     }
 
     @Override
@@ -83,13 +80,6 @@ public class SignUpFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 setFragment(new SignInFragment());
-            }
-        });
-
-        closeIB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendToMainActivity();
             }
         });
 

@@ -2,14 +2,13 @@ package com.kingscoder.clopirox_without_signup;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,29 +16,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.model.Document;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     private FirebaseAuth mFirebaseAuth;
     private ImageView userImageView;
     private FirebaseUser currentUser;
     private TextView userEmailTV, userFullNameTV;
     private FirebaseFirestore mFireStore;
+    private CardView medicineCardView, vaccinationCardView, ambulanceCardView, bmiCalCardView, consultantCardView;
 
 
     @Override
@@ -87,6 +79,22 @@ public class MainActivity extends AppCompatActivity
             userEmailTV.setText(currentUser.getEmail());
         }
 
+        initialization();
+    }
+
+    private void initialization() {
+        medicineCardView = findViewById(R.id.medicine_card_view);
+        vaccinationCardView = findViewById(R.id.vaccination_card_view);
+        ambulanceCardView = findViewById(R.id.ambulance_card_view);
+        bmiCalCardView = findViewById(R.id.bmi_card_view);
+        consultantCardView = findViewById(R.id.consultant_card_view);
+
+        medicineCardView.setOnClickListener(this);
+        vaccinationCardView.setOnClickListener(this);
+        ambulanceCardView.setOnClickListener(this);
+        bmiCalCardView.setOnClickListener(this);
+        consultantCardView.setOnClickListener(this);
+
     }
 
     @Override
@@ -117,9 +125,6 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.menu_search) {
 
             return true;
-        } else if (id == R.id.menu_cart){
-
-            return true;
         } else if (id == R.id.menu_notification){
 
             return true;
@@ -134,19 +139,7 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_my_mall){
-
-        } else if (id == R.id.nav_my_order) {
-            // Handle the camera action
-        } else if (id == R.id.nav_my_cart) {
-
-        } else if (id == R.id.nav_my_reward) {
-
-        } else if (id == R.id.nav_my_wish_list) {
-
-        } else if (id == R.id.nav_my_account) {
-
-        } else if (id == R.id.nav_signout){
+        if (id == R.id.nav_signout){
             if (mFirebaseAuth.getCurrentUser() != null){
                 signOut();
             }
@@ -162,5 +155,33 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent intent;
+        switch (v.getId()){
+            case R.id.medicine_card_view:
+                intent = new Intent(getApplicationContext(), MedicinePageActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.vaccination_card_view:
+                intent = new Intent(getApplicationContext(), ViccineMainActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.ambulance_card_view:
+                intent = new Intent(getApplicationContext(), EmbulenceActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.bmi_card_view:
+                intent = new Intent(getApplicationContext(), BMIActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.consultant_card_view:
+                intent = new Intent(getApplicationContext(), DoctorDetails.class);
+                intent.putExtra("doc", "doc");
+                startActivity(intent);
+                break;
+        }
     }
 }
